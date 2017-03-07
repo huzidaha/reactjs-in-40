@@ -77,9 +77,19 @@ class Index2 extends Component {
 }
 
 class Main extends Component {
+  constructor () {
+    super()
+    this.state = { name: 'jerry' }
+    setInterval(() => {
+      this.setState({
+        name: `Jerry${Math.random()}`
+      })
+    }, 1000)
+  }
+
   render () {
     return (
-      <Main2 name='jerry'>
+      <Main2 name={this.state.name}>
         <div>Main.</div>
         <div>Main.</div>
         <Main2 name='tomy'>TOMY</Main2>
@@ -111,4 +121,4 @@ class Main2 extends Component {
 }
 
 const wrapper = document.querySelector('#wrapper')
-mount(wrapper, <Index name='jerry' />)
+mount(wrapper, <div><Index2 name='jerry' /><Index /></div>)
